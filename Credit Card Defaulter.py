@@ -74,15 +74,17 @@ with data_analysis:
     st.text('male and Female count in the data set')
     sel_col, disp_col=st.beta_columns(2)
     dex=sel_col.selectbox('select the columns to see values with in',options=('SEX','EDUCATION','MARRIAGE','LIMIT_BAL'))
-    dex_1=sel_col.selectbox('select the comparison valuse',options=('SEX','EDUCATION','MARRIAGE'),index=2)
+    dex_1=sel_col.selectbox('select the comparison valuse',options=('SEX','EDUCATION','MARRIAGE'),index=0)
     
     
     st.bar_chart(pd.DataFrame(c_default[dex].value_counts()))
     st.text('male and female count on who defalted')
     
-    st.bar_chart(pd.pivot_table(data=c_default,index=['default ',dex_1],
-                         values=['LIMIT_BAL'],aggfunc='count'))
-pd.pivot_table(data=c_default,index=['default '],values=['LIMIT_BAL','SEX'],aggfunc='count')    
+    table_1=pd.pivot_table(data=c_default,index=['default '],columns=[dex_1],values=['LIMIT_BAL'],aggfunc='count')
+    
+    st.write(table_1)
+    
+    
 #c_default.BILL_AMT2.value_counts()    
 '''   
 with model_work:
