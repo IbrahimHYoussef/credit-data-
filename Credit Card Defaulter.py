@@ -80,7 +80,7 @@ with data_analysis:
     st.bar_chart(pd.DataFrame(c_default[dex].value_counts()))
     st.text('male and female count on who defalted')
     
-    st.bar_chart(pd.pivot_table(data=c_default,index=['default ',dex_1],
+    st.bar_chart(pd.pivot_table(data=c_default,index=['default ','SEX'],
                          values=['LIMIT_BAL'],aggfunc='count'))
 pd.pivot_table(data=c_default,index=['default '],values=['LIMIT_BAL','SEX'],aggfunc='count')    
 #c_default.BILL_AMT2.value_counts()    
